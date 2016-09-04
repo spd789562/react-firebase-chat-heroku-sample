@@ -1,0 +1,177 @@
+$admdiv-count:6;
+
+body,div,h1,h2,h3,span,p,ul,li,input{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul{
+  list-style: none;
+}
+body{
+  overflow: hidden;
+}
+@mixin animate($size,$index,$bottom){
+  width: $size*10px;
+  height: $size*10px;
+  left: $index*15%;
+  bottom: $bottom;
+  @keyframes rotate#{$index} {
+    from{
+      transform: rotate(0deg);
+    }
+    to{
+      transform: rotate($index * 30deg);
+    }
+  }
+  animation: rotate#{$index} 80s infinite;
+}
+#root{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "微軟正黑體";
+  background-image: linear-gradient(315deg,#8ff1cd,#1be79c);
+  & div.userLogin{
+    background-image: linear-gradient(315deg,#8ff1cd,#1be79c);
+  }
+  & div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  & .userLogin {
+    position: absolute;
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    text-align: center;
+    flex-direction: column;
+    color: #FFF;
+    & h3{
+      font-size: 2em;
+      font-weight: normal;
+      text-align: justify;
+    }
+    & input{
+      font-family: inherit;
+      text-align: center;
+      color: #666;
+      font-size: 1.5em;
+      border:1px solid #eee;
+      border-radius:5px;
+      width: 180px;
+      height: 30px;
+      margin-top: 10px;
+      background-color: hsla(0,0%,100%,.5);
+    }
+  }
+  & .admdiv{
+    position: absolute;
+    animation: up 160s infinite linear;
+    transform: translateZ(0);
+    & div{
+      position: absolute;
+      border: 1px solid #FFF;
+      background-color: hsla(0,0%,100%,.5);
+    }
+    & div:nth-child(1){
+      @include animate(1,1,-15%);
+    }
+    & div:nth-child(2){
+      @include animate(5,2,-75%);
+    }
+    & div:nth-child(3){
+      @include animate(4,3,-150%);
+    }
+    & div:nth-child(4){
+      @include animate(2,4,-105%);
+    }
+    & div:nth-child(5){
+      @include animate(6,5,-130%);
+    }
+    & div:nth-child(6){
+      @include animate(3,6,-45%);
+    }
+
+  }
+  .chat{
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: hsla(0,0%,100%,.5);
+    transform: translateZ(10px);
+    .chatmessage{
+      overflow: auto;
+      width: 100%;
+      height: calc(100% - 50px);
+      padding: 0 20px 20px 20px;
+      .messagedate{
+        font-size: .5em;
+        color:#666;
+      }
+      .messageusername{
+        font-size: .85em;
+        color:#666;
+      }
+      .messagetext > span{
+        font-size: 1.2em;
+        border-radius: 10px;
+        height: 38px;
+        padding: 5px 10px 0 10px;
+        // &:after{
+        //   content: '';
+        //   position: absolute;
+        //   border-top: 20px solid transparent;
+        //   border-left: 20px solid transparent;
+        //   transform: scaleY(.7) rotate(45deg);
+        // }
+      }
+      .messagemy{
+        .messageusername,.messagetext{
+          justify-content: flex-end;
+        }
+        .messagetext > span{
+          background-color: #a0e6ff;
+          // &:after{
+          //   right: 16px;
+          //   border-top-color: #a0e6ff;
+          // }
+        }
+      }
+      .messageother{
+        .messageusername,.messagetext{
+          justify-content: flex-start;
+        }
+        .messagetext > span{
+          background-color: #eee;
+          // &:after{
+          //   left: 16px;
+          //   border-left-color: #eee;
+          // }
+        }
+      }
+    }
+    .messagesInput{
+      position: fixed;
+      bottom: 1px;right: 0;left: 0;
+      height: 50px;
+      & .textInput{
+        border: 1px solid #bbb;
+        width: 100%;height: 100%;
+        font-size: 1.5em;
+        padding: 5px
+      }
+    }
+  }
+}
+@keyframes up{
+  from{
+    transform: translateY(-100px);
+  }
+  to{
+    transform: translateY(-270%);
+  }
+}
