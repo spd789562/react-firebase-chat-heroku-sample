@@ -8,7 +8,7 @@ import UserNameType from './UserNameType';
 class Home extends Component {
   constructor(props) {
     super(props);
-    this._messageRef = new Firebase("https://ycanandlelechat.firebaseio.com/");
+    this._messageRef = new Firebase("https://<Your firebase project name>.firebaseio.com/");
     this._message = [];
     this.state = {
       messages: this._message,
