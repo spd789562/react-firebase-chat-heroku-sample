@@ -116,18 +116,14 @@ body{
         font-size: .85em;
         color:#666;
       }
-      .messagetext > span{
-        font-size: 1.2em;
-        border-radius: 10px;
-        height: 38px;
-        padding: 5px 10px 0 10px;
-        // &:after{
-        //   content: '';
-        //   position: absolute;
-        //   border-top: 20px solid transparent;
-        //   border-left: 20px solid transparent;
-        //   transform: scaleY(.7) rotate(45deg);
-        // }
+      .messagetext{
+        margin: 8px 0;
+        & > span{
+          font-size: 1.2em;
+          border-radius: 10px;
+          padding: 5px 10px 0 10px;
+          word-break: break-all;
+        }
       }
       .messagemy{
         .messageusername,.messagetext{
